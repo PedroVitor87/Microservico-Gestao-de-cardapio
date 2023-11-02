@@ -8,6 +8,10 @@ app.use(cors())
 //Para usar arquivos estáticos como o html
 app.use(express.static(__dirname, { 'Content-Type': 'application/javascript', 'strict': false }));
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html') //sendFile para enviar o arquivo index.html como resposta
+});
+
 app.get('/cardapio', (req, res) => {
     res.sendFile(__dirname + '/index.html') //sendFile para enviar o arquivo index.html como resposta
 });
