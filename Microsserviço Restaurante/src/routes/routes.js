@@ -1,6 +1,11 @@
 const express = require('express')
 const routes = express.Router()
 const arrayPratos = require('../data/pratosArray')
+const menuController = require('../controller/menuController')
+
+
+
+routes.get("/teste", menuController.searchMenu);
 
 routes.get("/", (req, res) => {
     res.status(200).json(arrayPratos)
