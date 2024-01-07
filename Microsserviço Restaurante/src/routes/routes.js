@@ -6,6 +6,9 @@ const menuController = require('../controller/menuController')
 
 
 routes.get("/teste", menuController.searchMenu);
+routes.post("/teste/criar", menuController.createDish);
+routes.delete("/apagar/:id", menuController.deleteDishMenu);
+routes.patch("/teste/:id/atualizar-valor", menuController.updateDishValue);
 
 routes.get("/", (req, res) => {
     res.status(200).json(arrayPratos)
@@ -27,4 +30,4 @@ routes.post("/pratos/novoprato", (req, res) => {
     res.status(201).json(novoPrato)
 })
 
-module.exports = routes
+module.exports = routes;
