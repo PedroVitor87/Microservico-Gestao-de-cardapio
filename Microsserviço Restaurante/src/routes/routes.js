@@ -3,12 +3,10 @@ const routes = express.Router()
 const arrayPratos = require('../data/pratosArray')
 const menuController = require('../controller/menuController')
 
-
-
-routes.get("/teste", menuController.searchMenu);
-routes.post("/teste/criar", menuController.createDish);
-routes.delete("/apagar/:id", menuController.deleteDishMenu);
-routes.patch("/teste/:id/atualizar-valor", menuController.updateDishValue);
+routes.get("/cardapio", menuController.searchMenu);
+routes.post("/cardapio/criar-prato", menuController.createDish);
+routes.delete("/cardapio/:id/apagar-prato", menuController.deleteDishMenu);
+routes.patch("/cardapio/:id/atualizar-valor", menuController.updateDishValue);
 
 routes.get("/", (req, res) => {
     res.status(200).json(arrayPratos)
