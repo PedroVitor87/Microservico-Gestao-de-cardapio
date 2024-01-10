@@ -1,9 +1,11 @@
-const MenuModel = require('../model/menu');
+// const MenuModel = require('../model/menu');
+const models = require('../models')
+const menuModel = models.Menu
 
 class MenuController {
     async searchMenu(req, res){
         try{
-            const menu = await MenuModel.findAll();
+            const menu = await menuModel.findAll({});
             res.status(200).json(menu);
         }catch(err){
             res.status(500).json({error: 'Erro ao localizar cardápio'});    
@@ -15,7 +17,7 @@ class MenuController {
             if (!dish_name || !value) {
                 return res.status(400).json({ error: 'Nome do prato e valor são obrigatórios.' });
             };
-            const newDish = await MenuModel.create({ dish_name, description, value });
+            const newDish = await menuModel.create({ dish_name, description, value });
             res.status(201).json({
                 message: 'Prato criado com sucesso.',
                 dish: newDish.toJSON()
@@ -27,7 +29,7 @@ class MenuController {
     async deleteDishMenu(req, res){
         try{
             const idDish = req.params.id;
-            const delet = await MenuModel.findByPk(idDish);
+            const delet = await menuModel.findByPk(idDish);
             if (!delet) {
                 return res.status(404).json({error: 'Prato não encontrado no cardápio'});
             };
@@ -43,7 +45,7 @@ class MenuController {
         try{
             const idDish = req.params.id;
             const { value } = req.body;
-            const dish = await MenuModel.findByPk(idDish);
+            const dish = await menuModel.findByPk(idDish);
             if (!dish) {
                 return res.status(404).json({ error: 'Prato não encontrado.' });
             };
