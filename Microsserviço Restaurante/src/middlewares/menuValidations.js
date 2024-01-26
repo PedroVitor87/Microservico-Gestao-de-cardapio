@@ -6,6 +6,9 @@ const validateMenu = (req, res, next) => {
     if (!dish_name || dish_name.trim() === '') {
         errors.push('O nome do prato é obrigatório.');
     }
+    if (dish_name.length <= 4){
+        errors.push('O nome do prato tem que conter no minimo 4 caracteres.')
+    }
     if (description.length > 400) {
         errors.push('A descrição não pode ter mais de 400 caracteres.');
     }
