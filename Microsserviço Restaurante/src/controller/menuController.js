@@ -50,8 +50,10 @@ class MenuController {
                 return res.status(404).json({ error: 'Prato não encontrado.' });
             };
             await dish.update({ value });
-            return res.status(200).json({ message: 'Valor do prato atualizado com sucesso.' });
+            const updatedDish = await menuModel.findByPk(idDish);
+            return res.status(200).json({ message: 'Valor do prato atualizado com sucesso.' , dish: updatedDish });
         }catch(err){
+            console.error(err)
             res.status(500).json({ error: 'Erro ao atualizar prato'})
         };
     };
