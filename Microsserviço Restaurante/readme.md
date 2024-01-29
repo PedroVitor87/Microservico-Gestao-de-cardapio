@@ -2,6 +2,12 @@
 
 Este é o backend de um microserviço Node.js para o cadastro de pratos no cardápio de um restaurante. Ele utiliza Express.js e Sequelize ORM para interagir com o banco de dados MySQL.
 
+## Funcionalidades
+
+- Adição, atualização e exclusão de pratos no cardápio.
+- Consulta do cardápio completo.
+- Atualização do valor de um prato específico.
+
 ## Como Usar
 
 ### Pré-requisitos
